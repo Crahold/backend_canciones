@@ -10,7 +10,7 @@ const cancionSchema = new mongoose.Schema({
         required: true,
     },
     anio: {
-        type: String,
+        type: Number,
         required: true,
     },
     genero: {

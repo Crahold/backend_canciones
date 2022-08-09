@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.get("/", async (req, res) => {
+router.get("/", async(req, res) => {
     try {
         const cancion = await Cancion.find();
         res.status(201).json(cancion);
@@ -27,6 +27,32 @@ router.get("/", async (req, res) => {
     catch (err) {
         res.status(500).json({ message: err.message });
     }
-})
+});
+
+router.delete("/:id", async(req, res) => {
+    try {
+        const cancion = await Cancion.findById(req.params.id);
+        await cancion.remove();
+        res.status(201).json(cancion);
+    }
+    catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+router.patch("/:id", async (req, res) => {
+    try {
+        const cancion = await Cancion.findById(req.params.id);
+        cancion.nombre = req.body.infocancion.nombre,
+        cancion.grupo = req.body.infocancion.grupo,
+        cancion.anio = req.body.infocancion.anio,
+        cancion.genero = req.body.infocancion.genero
+        await cancion.save();
+        res.status(201).json({ message: "Canción Editada con Éxito." })
+    }
+    catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
 
 module.exports = router;
