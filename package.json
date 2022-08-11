@@ -2,9 +2,8 @@
   "name": "serverapi",
   "version": "1.0.0",
   "description": "Conexion a MongoDB",
-  "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "ManuelMazon",
   "dependencies": {
