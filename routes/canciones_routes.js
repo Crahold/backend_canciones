@@ -29,11 +29,22 @@ router.get("/", async(req, res) => {
     }
 });
 
+router.get("/:id", async(req, res) => {
+    try {
+        const cancion = await Cancion.findById(req.params.id);
+        const cancionjson = [cancion];
+        res.status(201).json(cancionjson);
+    }
+    catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
 router.delete("/:id", async(req, res) => {
     try {
         const cancion = await Cancion.findById(req.params.id);
         await cancion.remove();
-        res.status(201).json(cancion);
+        res.status(201).json("Cancion Eliminada");
     }
     catch (err) {
         res.status(500).json({ message: err.message });
