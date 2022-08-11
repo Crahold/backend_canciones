@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Conexion a MongoDB",
   "scripts": {
-    "start": "node app.js"
+    "start": "node ./app.js"
   },
   "author": "ManuelMazon",
   "dependencies": {
